@@ -88,6 +88,36 @@ F H <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 
+<h3>Program:<h3>
+
+```from collections import defaultdict
+
+def dfs(graph, start, visited, path):
+    path.append(start)
+    visited[start] = True
+    for neighbour in graph[start]:
+        if not visited[neighbour]:
+            dfs(graph, neighbour, visited, path)
+    return path
+
+# Initialize the graph
+graph = defaultdict(list)
+n, e = map(int, input("Enter number of nodes and edges: ").split())
+for _ in range(e):
+    u, v = input("Enter edge (u v): ").split()
+    graph[u].append(v)
+    graph[v].append(u)  # Assuming undirected graph
+
+# Initialize visited dictionary and path list
+start = 'A'
+visited = defaultdict(bool)
+path = []
+
+# Perform DFS
+traversedpath = dfs(graph, start, visited, path)
+print("Traversed Path:", traversedpath)
+```
+
 <hr>
 <h3>Result:</h3>
 <hr>
